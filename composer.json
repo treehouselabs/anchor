@@ -1,0 +1,43 @@
+{
+  "name": "treehouselabs/anchor",
+  "type": "library",
+  "description": "Event library",
+  "keywords": ["event"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Peter Kruithof",
+      "email": "peter@treehouse.nl",
+      "role": "Lead Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "psr/log": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "mockery/mockery": "~0.9",
+    "doctrine/orm": "~2.5",
+    "scrutinizer/ocular": "~1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "TreeHouse\\Anchor\\": "src/TreeHouse/Anchor/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TreeHouse\\Anchor\\Test\\": "tests/TreeHouse/Anchor/Test/",
+      "TreeHouse\\Anchor\\Tests\\": "tests/TreeHouse/Anchor/Tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
