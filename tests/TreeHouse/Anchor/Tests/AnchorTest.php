@@ -4,8 +4,8 @@ namespace TreeHouse\Anchor\Tests;
 
 use Mockery\MockInterface;
 use TreeHouse\Anchor\Anchor;
-use TreeHouse\Anchor\Event\Event;
 use TreeHouse\Anchor\Observer\ObserverInterface;
+use TreeHouse\Anchor\Test\Event\TestEvent;
 use TreeHouse\Anchor\Test\Observer\NullObserver;
 
 class AnchorTest extends \PHPUnit_Framework_TestCase
@@ -53,7 +53,7 @@ class AnchorTest extends \PHPUnit_Framework_TestCase
      */
     public function it_reports_to_specific_observers()
     {
-        $event = new Event('name', ['foo' => 'bar'], new \DateTime());
+        $event = new TestEvent('name', ['foo' => 'bar'], new \DateTime());
 
         /** @var ObserverInterface|MockInterface $observer1 */
         $observer1 = \Mockery::mock(ObserverInterface::class);

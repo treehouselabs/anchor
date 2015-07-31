@@ -18,7 +18,7 @@ class AbstractObserverTest extends \PHPUnit_Framework_TestCase
         $observer = \Mockery::mock(AbstractObserver::class);
         $observer->makePartial();
 
-        $this->assertTrue($observer->observes(new Event('test', [], new \DateTime())));
+        $this->assertTrue($observer->observes(new Event()));
         $this->assertTrue($observer->observes(new TestEvent()));
     }
 
@@ -32,7 +32,7 @@ class AbstractObserverTest extends \PHPUnit_Framework_TestCase
         $observer->makePartial();
         $observer->setObservedClasses([Event::class]);
 
-        $this->assertTrue($observer->observes(new Event('test', [], new \DateTime())));
+        $this->assertTrue($observer->observes(new Event()));
         $this->assertFalse($observer->observes(new TestEvent()));
     }
 }

@@ -13,6 +13,7 @@ interface EventInterface
 
     /**
      * Returns the data associated with the event.
+     * Note that this data must be serializable!
      *
      * @return array
      */

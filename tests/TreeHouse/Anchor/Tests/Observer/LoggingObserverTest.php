@@ -28,17 +28,18 @@ class LoggingObserverTest extends \PHPUnit_Framework_TestCase
     public function it_logs_a_message()
     {
         $data = ['foo' => 'bar'];
+        $event = new Event($data, new \DateTime());
 
         /** @var LoggerInterface|MockInterface $logger */
         $logger = \Mockery::mock(LoggerInterface::class);
         $logger
             ->shouldReceive('info')
             ->once()
-            ->with(containsString('test'), arrayContaining($data))
+            ->with(containsString($event->getName()), arrayContaining($data))
         ;
 
         $observer = new LoggingObserver($logger);
-        $observer->observe(new Event('test', $data, new \DateTime()));
+        $observer->observe($event);
     }
 
     /**
@@ -47,6 +48,7 @@ class LoggingObserverTest extends \PHPUnit_Framework_TestCase
     public function it_can_use_a_custom_format()
     {
         $data = ['foo' => 'bar'];
+        $event = new Event($data, new \DateTime());
 
         /* @var FormatterInterface|MockInterface $logger */
         $formatter = \Mockery::mock(FormatterInterface::class);
@@ -61,6 +63,6 @@ class LoggingObserverTest extends \PHPUnit_Framework_TestCase
         ;
 
         $observer = new LoggingObserver($logger, $formatter);
-        $observer->observe(new Event('test', $data, new \DateTime()));
+        $observer->observe($event);
     }
 }

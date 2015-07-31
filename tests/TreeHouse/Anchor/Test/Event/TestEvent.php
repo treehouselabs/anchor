@@ -7,19 +7,38 @@ use TreeHouse\Anchor\Event\EventInterface;
 class TestEvent implements EventInterface
 {
     /**
-     * @inheritdoc
+     * @var string
      */
-    public function getName()
+    public $name;
+
+    /**
+     * @var array
+     */
+    public $data;
+
+    /**
+     * @var \DateTime
+     */
+    public $date;
+
+    /**
+     * @param string    $name
+     * @param array     $data
+     * @param \DateTime $date
+     */
+    public function __construct($name = 'test', array $data = [], \DateTime $date = null)
     {
-        return 'test';
+        $this->name = $name;
+        $this->data = $data;
+        $this->date = $date ?: new \DateTime();
     }
 
     /**
      * @inheritdoc
      */
-    public function getData()
+    public function getName()
     {
-        return ['foo' => 'bar'];
+        return $this->name;
     }
 
     /**
@@ -27,6 +46,14 @@ class TestEvent implements EventInterface
      */
     public function getDate()
     {
-        return new \DateTime();
+        return $this->date;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 }

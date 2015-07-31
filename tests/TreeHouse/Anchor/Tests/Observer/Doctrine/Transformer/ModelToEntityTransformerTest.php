@@ -23,17 +23,15 @@ class ModelToEntityTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_transforms_an_event()
     {
-        $name = 'foo';
         $data = ['foo' => 'bar'];
         $date = new \DateTime();
 
-        $event = new Event($name, $data, $date);
+        $event = new Event($data, $date);
 
         $entity = (new ModelToEntityTransformer())->transform($event);
 
-        $this->assertSame($name, $entity->getName(), '->getName() should return the name');
+        $this->assertSame($event->getName(), $entity->getName(), '->getName() should return the name');
         $this->assertSame($data, $entity->getData(), '->getData() should return the data');
         $this->assertSame($date, $entity->getDate(), '->getDate() should return the date');
     }
-
 }

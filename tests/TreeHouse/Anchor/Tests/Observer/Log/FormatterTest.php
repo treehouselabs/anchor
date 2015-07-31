@@ -15,9 +15,9 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
         $date = '2015-07-29 13:55:00';
 
         $formatter = new Formatter();
-        $event = new Event('test', [], new \DateTime($date));
+        $event = new Event([], new \DateTime($date));
 
-        $this->assertSame('[2015-07-29 13:55:00] test', $formatter->format($event));
+        $this->assertSame('[2015-07-29 13:55:00] ' . $event->getName(), $formatter->format($event));
     }
 
     /**
@@ -29,10 +29,10 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
         $format = DATE_COOKIE;
 
         $formatter = new Formatter($format);
-        $event = new Event('test', [], $date);
+        $event = new Event([], $date);
 
         $this->assertSame(
-            sprintf('[%s] test', $date->format($format)),
+            sprintf('[%s] %s', $date->format($format), $event->getName()),
             $formatter->format($event)
         );
     }

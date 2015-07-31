@@ -30,5 +30,4 @@ class EventTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($event, $event->setDate($date), '->setDate() should be chainable');
         $this->assertSame($date, $event->getDate(), '->getDate() should return the date');
     }
-
 }

@@ -16,8 +16,8 @@ class ModelToEntityTransformer implements TransformerInterface
     {
         $entity = new Event();
         $entity->setName($event->getName());
-        $entity->setData($event->getData());
         $entity->setDate($event->getDate());
+        $entity->setData($event->getData());
 
         return $entity;
     }
